@@ -11,9 +11,8 @@ Trabalho 3 da matéria de "Princípios da visão computacional" do professor "Te
 Para conseguir rodar o código em sua máquina é necessário possuir Python3 e OpenCV3 ou compativeis instalados. 
 Na pasta /src rode o comando pelo terminal:
 ```
-	python ./src/pd3.py --r1
+	python ./src/pd3.py
 ```
-Para executar o requisito 1
 
 ## Autor
 
