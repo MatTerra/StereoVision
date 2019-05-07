@@ -4,8 +4,8 @@ import numpy as np
 w=50
 A = 2*w
 A = A**2
-img1 = cv2.imread('JadePlant/im0.png')  # queryImage
-img2 = cv2.imread('JadePlant/im1.png')  # trainImage
+img1 = cv2.imread('Motorcycle/im0.png')  # queryImage
+img2 = cv2.imread('Motorcycle/im1.png')  # trainImage
 
 cv2.namedWindow('imagem base', cv2.WINDOW_NORMAL)
 cv2.resizeWindow("imagem base", 600, 600)
@@ -33,16 +33,16 @@ def click(event, x, y, flags, param):
             SAD = np.sum(SAD)
             SAD_array[x_perr] = SAD
         match = sorted(SAD_array.items(), key=lambda z: z[1])
-        imgR = cv2.imread('JadePlant/im1.png')
-        xnova = x-300
-        imgR = cv2.circle(imgR, (xnova, y), 2, (255, 255, 255), 4)
-        for j in range(0, len(match)):
-            if abs(match[j][0]-xnova) > 100:
-                j+=1
-            else:
-                x_novo = match[j][0]
-                imgR = cv2.circle(imgR, (x_novo, y), w, (0, 255, 0), 4)
-                break
+        imgR = cv2.imread('Motorcycle/im1.png')
+        # xnova = x-300
+        # imgR = cv2.circle(imgR, (xnova, y), 2, (255, 255, 255), 4)
+        # for j in range(0, len(match)):
+        #     if abs(match[j][0]-xnova) > 100:
+        #         j+=1
+        #     else:
+        #         x_novo = match[j][0]
+        #         imgR = cv2.circle(imgR, (x_novo, y), w, (0, 255, 0), 4)
+        #         break
         imgR = cv2.circle(imgR, (match[0][0], y), w, (255, 0, 0), 4)
         imgR = cv2.circle(imgR, (match[1][0], y), w, (0, 0, 255), 4)
         img1 = cv2.circle(img1, (x,y), w, (0,0,255), 4)

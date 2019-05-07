@@ -46,8 +46,8 @@ def click(event, x, y, flags, param):
         #plt.imshow(img3, ), plt.show()
 
 
-img1 = cv2.imread('JadePlant/im0.png', 0)  # queryImage
-img2 = cv2.imread('JadePlant/im1.png', 0)  # trainImage
+img1 = cv2.imread('Motorcycle/im0.png', 0)  # queryImage
+img2 = cv2.imread('Motorcycle/im1.png', 0)  # trainImage
 
 block_matcher = cv2.StereoBM_create(numDisparities=640, blockSize=11)
 disp = block_matcher.compute(img1, img2)
@@ -59,7 +59,7 @@ cv2.imshow("disparity", disp * norm_coeff / 255)
 
 cv2.resizeWindow("disparity", 600, 600)
 
-img2_cor = cv2.imread('JadePlant/im1.png')  # trainImage
+img2_cor = cv2.imread('Motorcycle/im1.png')  # trainImage
 # cv2.namedWindow("image", cv2.WINDOW_NORMAL)
 # cv2.namedWindow("Match", cv2.WINDOW_NORMAL)
 cv2.setMouseCallback("image", click)
