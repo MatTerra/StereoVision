@@ -49,24 +49,25 @@ def click(event, x, y, flags, param):
 img1 = cv2.imread('JadePlant/im0.png', 0)  # queryImage
 img2 = cv2.imread('JadePlant/im1.png', 0)  # trainImage
 
-block_matcher = cv2.StereoBM_create(0, 5)
-disp = block_matcher.compute(img2, img1)
+block_matcher = cv2.StereoBM_create(numDisparities=640, blockSize=11)
+disp = block_matcher.compute(img1, img2)
+block_matcher.setMinDisparity(640)
 norm_coeff = 255 / disp.max()
 cv2.namedWindow("disparity", cv2.WINDOW_NORMAL)
 cv2.imshow("disparity", disp * norm_coeff / 255)
+# cv2.imshow("disarity", disp )
 
 cv2.resizeWindow("disparity", 600, 600)
 
 img2_cor = cv2.imread('JadePlant/im1.png')  # trainImage
-cv2.namedWindow("image", cv2.WINDOW_NORMAL)
-cv2.namedWindow("Match", cv2.WINDOW_NORMAL)
+# cv2.namedWindow("image", cv2.WINDOW_NORMAL)
+# cv2.namedWindow("Match", cv2.WINDOW_NORMAL)
 cv2.setMouseCallback("image", click)
-cv2.imshow("Match", img1)
-cv2.imshow("image", img2_cor)
-cv2.resizeWindow("image", 600, 600)
-cv2.resizeWindow("Match", 600,600)
-
-while not (cv2.waitKey(25) & 0xFF == ord('q') or cv2.getWindowProperty('image', 0)):
-    cv2.imshow("image", img2_cor)
-    cv2.waitKey(1)
-
+# cv2.imshow("Match", img1)
+# cv2.imshow("image", img2_cor)
+# cv2.resizeWindow("image", 600, 600)
+# cv2.resizeWindow("Match", 600, 600)
+while not cv2.waitKey(25) & 0xFF == ord('q'):
+    cv2.imshow("disparity", disp * norm_coeff / 255)
+# while not (cv2.waitKey(25) & 0xFF == ord('q') or cv2.getWindowProperty('image', 0)):
+    # cv2.imshow("image", img2_cor)
